@@ -6,7 +6,7 @@ class User(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=30)
-    participants = models.ManyToManyField(User)
+    players = models.ManyToManyField(User)
 
 class Game(models.Model):
     name = models.CharField(max_length=50)
@@ -15,6 +15,7 @@ class Game(models.Model):
 class Match(models.Model):
     datetime = models.DateTimeField()
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
 class Result(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE)

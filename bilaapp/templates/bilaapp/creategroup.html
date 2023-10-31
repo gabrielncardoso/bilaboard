@@ -1,0 +1,8 @@
+<h1>Create a new group</h1>
+
+<form action="{% url 'storegroup' %}" method="post">
+    {% csrf_token %}
+    <label>Group Name</label>
+    <input type="text" name="name">
+    <button>Save</button>
+</form>
