@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Group
+from .models import Group, Game, Match
 
 def dashboard(request):
     group_list = Group.objects.all()
@@ -18,8 +18,10 @@ def storegroup(request):
     group.save()
     return redirect('dashboard')
 
-def groupdetail(request):
-    return HttpResponse("Participants, games list")
+def groupdetail(request, group_id):
+    group = Group.objects.get(pk=group_id)
+    user_list = group.players.all()
+    return HttpResponse(user_list)
 
 def editgroup(request):
     return HttpResponse("Edit group details. Group's name")
@@ -39,10 +41,14 @@ def removeplayer(request):
 # match
 
 def creatematch(request):
-    return HttpResponse("Create a new match")
+    return render(request, 'bilaapp/creatematch.html')
 
 def storematch(request):
-    return HttpResponse("Confirm match information + Redirect to match detail.")
+    game = Game.objects.get(pk=request.POST['game_id'])
+    group = Group.objects.get(pk=request.POST['group_id'])
+    match = Match(game = game, group = group)
+    match.save()
+    return redirect('dashboard')
 
 def matchdetail(request):
     return HttpResponse("Here you are going to see this match details.")

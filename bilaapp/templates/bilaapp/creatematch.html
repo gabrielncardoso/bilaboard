@@ -1,0 +1,21 @@
+<h1>Create a new match</h1>
+
+<form action="{% url 'storematch' %}" method="post">
+    {% csrf_token %}
+    
+    <label>Game</label>
+    <select name="game_id">
+        <option value="1">Game 1</option>
+        <option value="2">Game 2</option>
+        <option value="3">Game 3</option>
+    </select>
+
+    <label>Group</label>
+    <select name="group_id">
+        <option value="1">Group 1</option>
+        <option value="2">Group 2</option>
+        <option value="3">Group 3</option>
+    </select>
+
+    <button>Save</button>
+</form>

@@ -17,11 +17,11 @@ urlpatterns = [
     path("group/<int:group_id>/removeplayer/", views.removeplayer, name="removeplayer"),
 
     # match
-    path("group/<int:group_id>/newmatch/", views.creatematch, name="newmatch"),
-    path("group/<int:group_id>/storematch/", views.storematch, name="storematch"),
-    path("group/<int:group_id>/match/<int:match_id>/editmatch/", views.editmatch, name="editmatch"),
-    path("group/<int:group_id>/match/<int:match_id>/updatematch/", views.updatematch, name="updatematch"),
-    path("group/<int:group_id>/match/<int:match_id>/destroymatch/", views.destroymatch, name="destroymatch"),
+    path("creatematch/", views.creatematch, name="creatematch"),
+    path("storematch/", views.storematch, name="storematch"),
+    path("match/<int:match_id>/editmatch/", views.editmatch, name="editmatch"),
+    path("match/<int:match_id>/updatematch/", views.updatematch, name="updatematch"),
+    path("match/<int:match_id>/destroymatch/", views.destroymatch, name="destroymatch"),
 
     #game
     path("game/<int:game_id>/", views.gamedetail, name="gamedetail"),
