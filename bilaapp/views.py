@@ -1,6 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Group, Game, Match
+from django.contrib.auth.models import User
+
+def login(request):
+    #AUTHENTICATION
+    return HttpResponse("Login screen")
+
+def register(request):
+    return render(request, 'bilaapp/register.html')
+
+def storeregister(request):
+    user = request.POST['name', 'email', 'password']
+    u = User(user)
+    u.save()
+    return redirect('login')
 
 def dashboard(request):
     group_list = Group.objects.all()
