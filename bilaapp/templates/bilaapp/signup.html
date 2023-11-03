@@ -1,6 +1,6 @@
-<h1>Register</h1>
+<h1>Sign Up</h1>
 
-<form action="{% url 'storeregister' %}" method="post">
+<form action="{% url 'storesignup' %}" method="post">
     {% csrf_token %}
     <label>Name</label>
     <input type="text" name="name">
@@ -8,5 +8,6 @@
     <input type="email" name="email">
     <label>Password</label>
     <input type="password" name="password">
-    <button>Save</button>
+    <button>Register</button>
 </form>
+<a href="{% url 'signin' %}">Back</a>

@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 {% if group_list %}
     <ul>
     {% for group in group_list %}
@@ -12,3 +15,7 @@
 
 <a href="{% url 'creategroup' %}">Create Group</a>
 <a href="{% url 'creatematch' %}">New match</a>
+<hr>
+<a href="{% url 'signout' %}">Sign Out</a>
+
+{% endblock %}
