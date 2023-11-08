@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db.models import Count
 from .models import Group, Game, Match
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -62,7 +63,7 @@ def storegroup(request):
 def groupdetail(request, group_id):
     group = Group.objects.get(pk=group_id)
     user_list = group.players.all()
-    return HttpResponse(user_list)
+    return render(request, 'bilaapp/groupdetail.html',  {'user_list': user_list, 'group_id': group_id})
 
 @login_required
 def editgroup(request):
@@ -77,12 +78,29 @@ def destroygroup(request):
     return HttpResponse("Deletes a group")
 
 @login_required
-def storeplayer(request):
-    return HttpResponse("Add player to a group")
+def addplayer(request, group_id):
+    group = Group.objects.get(pk=group_id)
+    groupname = group.name
+    #TODO: FILTRAR OS JOGADORES QUE NÃO PERTENCEM AO GRUPO ATUAL. 
+    players = User.objects.all()
+    return render(request, 'bilaapp/addplayer.html', {'group_id': group_id, 'group_name': groupname, 'players': players})
 
 @login_required
-def removeplayer(request):
-    return HttpResponse("Remove player from a group")
+def storeplayer(request, group_id):
+    user = request.POST['user']
+    g = Group.objects.get(pk=group_id)
+    p = User.objects.get(pk=user)
+    g.players.add(p)
+    g.save()
+    return redirect("groupdetail", g.id)
+
+@login_required
+def removeplayer(request, group_id):
+    user = request.POST['user_id']
+    g = Group.objects.get(pk=group_id)
+    p = User.objects.get(pk=user)
+    g.players.remove(p)
+    return redirect("groupdetail", g.id)
 
 # match
 

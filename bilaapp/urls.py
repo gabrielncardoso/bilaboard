@@ -19,6 +19,7 @@ urlpatterns = [
     path("group/<int:group_id>/edit/", views.editgroup, name="editgroup"),
     path("group/<int:group_id>/update/", views.updategroup, name="updategroup"),
     path("group/<int:group_id>/destroy/", views.destroygroup, name="destroygroup"),
+    path("group/<int:group_id>/addplayer/", views.addplayer, name="addplayer"),
     path("group/<int:group_id>/storeplayer/", views.storeplayer, name="storeplayer"),
     path("group/<int:group_id>/removeplayer/", views.removeplayer, name="removeplayer"),
 
