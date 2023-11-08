@@ -1,0 +1,16 @@
+<h1>Add a new player to group {{group_name}}</h1>
+
+<form action="{% url 'storeplayer' group_id %}" method="post">
+    {% csrf_token %}
+
+    <label>Player</label>
+    <select name="user">
+        {% for player in players %}
+        
+        <option value="{{player.id}}">{{player.username}}</option>
+
+        {% endfor %}
+    </select>
+
+    <button>Save</button>
+</form>

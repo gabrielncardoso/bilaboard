@@ -1,0 +1,17 @@
+{% if user_list %}
+    <ul>
+    {% for player in user_list %}
+        <li>
+            {{ player }} <button form="removeplayerform" value="{{player.id}}" name="user_id">Remove</button>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No participants in this group.</p>
+{% endif %}
+
+<a href="{% url 'addplayer' group_id %}">Add Player</a>
+<hr>
+<a href="{% url 'dashboard' %}">Back</a>
+
+<form action="{% url 'removeplayer' group_id %}" method="POST" id="removeplayerform" hidden>{% csrf_token %}</form>
