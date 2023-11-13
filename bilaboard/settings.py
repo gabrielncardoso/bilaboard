@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inertia',
-    # 'django-vite',
+    'django_vite',
 ]
 
 MIDDLEWARE = [
