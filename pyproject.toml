@@ -2,7 +2,10 @@
 name = "bilaboard"
 version = "0.1.0"
 description = ""
-authors = ["Gabriel Cardoso <cardosogabn@gmail.com>"]
+authors = [
+    "Gabriel Cardoso <cardosogabn@gmail.com>",
+    "Yago de Castro <yagofernandodecastro@gmail.com>",
+]
 license = "MIT License"
 readme = "README.md"
 
