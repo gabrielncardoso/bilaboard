@@ -11,7 +11,7 @@ def signin(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
-        return render(request, 'bilaapp/signin.html')
+        return inertia_render(request, 'Auth/Signin')
 
 def auth(request):
     username = request.POST["username"]
@@ -31,7 +31,7 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
-        return render(request, 'bilaapp/signup.html')
+        return inertia_render(request, 'Auth/Signup')
 
 def storesignup(request):
     name = request.POST['name']
@@ -51,7 +51,7 @@ def dashboard(request):
 @login_required
 def creategroup(request):
     # create group form
-    return render(request, 'bilaapp/creategroup.html')
+    return inertia_render(request, 'Group/Create')
 
 @login_required
 def storegroup(request):
@@ -64,7 +64,7 @@ def storegroup(request):
 def groupdetail(request, group_id):
     group = Group.objects.get(pk=group_id)
     user_list = group.players.all()
-    return render(request, 'bilaapp/groupdetail.html',  {'user_list': user_list, 'group_id': group_id})
+    return render(request, 'Group/Show',  {'user_list': user_list, 'group_id': group_id})
 
 @login_required
 def editgroup(request):
@@ -84,7 +84,7 @@ def addplayer(request, group_id):
     groupname = group.name
     #TODO: FILTRAR OS JOGADORES QUE NÃO PERTENCEM AO GRUPO ATUAL. 
     players = User.objects.all()
-    return render(request, 'bilaapp/addplayer.html', {'group_id': group_id, 'group_name': groupname, 'players': players})
+    return render(request, 'Player/Create', {'group_id': group_id, 'group_name': groupname, 'players': players})
 
 @login_required
 def storeplayer(request, group_id):
@@ -107,7 +107,7 @@ def removeplayer(request, group_id):
 
 @login_required
 def creatematch(request):
-    return render(request, 'bilaapp/creatematch.html')
+    return render(request, 'Match/Create')
 
 @login_required
 def storematch(request):
@@ -118,8 +118,9 @@ def storematch(request):
     return redirect('dashboard')
 
 @login_required
-def matchdetail(request):
-    return HttpResponse("Here you are going to see this match details.")
+def matchdetail(request, match_id):
+    match = Match.objects.get(pk=match_id)
+    return inertia_render(request, 'Match/Show', {'match', match})
 
 @login_required
 def editmatch(request):
