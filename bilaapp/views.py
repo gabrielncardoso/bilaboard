@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.db.models import Count
 from .models import Group, Game, Match
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from inertia import render
 
 def signin(request):
     if request.user.is_authenticated:
@@ -43,7 +44,7 @@ def storesignup(request):
 @login_required
 def dashboard(request):
     group_list = Group.objects.all()
-    return render(request, 'bilaapp/dashboard.html', {'group_list': group_list})
+    return render(request, 'Dashboard', {'group_list': group_list})
 
 # group
 
