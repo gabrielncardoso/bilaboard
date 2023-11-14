@@ -1,10 +1,14 @@
 {
     "private": true,
     "scripts": {
-      "dev": "vite",
-      "prod": "vite build"
+        "dev": "vite",
+        "prod": "vite build"
     },
     "devDependencies": {
-      "vite": "^2.3.7"
+        "vite": "^4.*"
+    },
+    "dependencies": {
+        "@inertiajs/vue3": "^1.0.14",
+        "@vitejs/plugin-vue": "^4.4.1"
     }
-  }
+}
