@@ -1,3 +1,12 @@
+<script setup>
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+
+const page = usePage()
+
+const auth_url = computed(() => page.props.auth_url)
+</script>
+
 <template>
     <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -9,7 +18,7 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form class="space-y-6" action="#" method="POST">
+            <form class="space-y-6" :action="auth_url" method="POST">
                 <div>
                     <label for="username" class="block text-sm font-medium leading-6 text-gray-900">
                         Username

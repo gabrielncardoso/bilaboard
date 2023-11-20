@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import Count
 from .models import Group, Game, Match
@@ -11,7 +12,7 @@ def signin(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
-        return inertia_render(request, 'Auth/Signin')
+        return inertia_render(request, 'Auth/Signin', {'auth_url': reverse('auth')})
 
 def auth(request):
     username = request.POST["username"]
