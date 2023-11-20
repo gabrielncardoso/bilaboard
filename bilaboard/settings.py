@@ -129,7 +129,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Where ViteJS assets are built.
-DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "dist"
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
 
 # If use HMR or not.
 DJANGO_VITE_DEV_MODE = DEBUG
