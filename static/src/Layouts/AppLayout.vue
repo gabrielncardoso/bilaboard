@@ -32,6 +32,9 @@ export default {
             router.get(this.$page.props.signout_url);
         }
     },
+    mounted() {
+        console.log(this.$getRoute('dashboard'))
+    }
 }
 
 </script>

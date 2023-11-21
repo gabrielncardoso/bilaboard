@@ -52,9 +52,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'inertia.middleware.InertiaMiddleware',
+    'middleware.share_routes.inertia_share',
 ]
 
 ROOT_URLCONF = 'bilaboard.urls'
+
+APP_URL = 'http://localhost:8000'
 
 TEMPLATES = [
     {

@@ -1,5 +1,6 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
+import getRoutesPlugin from './plugins/getRoutes'
 import "./assets/css/main.css"
 
 createInertiaApp({
@@ -10,6 +11,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
+      .use(getRoutesPlugin, {routes: props.initialPage.props.routes, appUrl: props.initialPage.props.app_url})
       .mount(el)
   },
 })

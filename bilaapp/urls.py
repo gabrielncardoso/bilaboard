@@ -10,6 +10,7 @@ urlpatterns = [
     path("signout/", views.signout, name="signout"),
     path("signup/", views.signup, name="signup"),
     path("storesignup/", views.storesignup, name="storesignup"),
+    
     path("dashboard/", views.dashboard, name="dashboard"),
 
     #group
