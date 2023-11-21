@@ -33,6 +33,7 @@ export default {
         }
     },
     mounted() {
+        console.log(this.$page.props.routes)
         console.log(this.$getRoute('dashboard'))
     }
 }
