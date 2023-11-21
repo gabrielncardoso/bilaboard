@@ -35,6 +35,7 @@ export default {
     mounted() {
         console.log(this.$page.props.routes)
         console.log(this.$getRoute('dashboard'))
+        console.log(this.$getRoute('groupdetail', {group_id: 1}))
     }
 }
 
