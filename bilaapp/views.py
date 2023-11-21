@@ -15,8 +15,8 @@ def signin(request):
         return inertia_render(request, 'Auth/Signin', {'auth_url': reverse('auth')})
 
 def auth(request):
-    username = request.POST.get("username")
-    password = request.POST.get("password")
+    username = request.POST["username"]
+    password = request.POST["password"]
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
@@ -34,7 +34,7 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect("dashboard")
     else:
-        return inertia_render(request, "Auth/Signup")
+        return inertia_render(request, "Auth/Signup", {'storesignup_url': reverse('storesignup')})
 
 
 def storesignup(request):
@@ -48,8 +48,8 @@ def storesignup(request):
 
 @login_required
 def dashboard(request):
-    group_list = Group.objects.all()
-    return inertia_render(request, "Dashboard", {"group_list": group_list})
+    user_groups = request.user.groups.all()
+    return inertia_render(request, "Dashboard", {"user_groups": user_groups, 'signout_url': reverse('signout')})
 
 
 # group
@@ -73,7 +73,7 @@ def storegroup(request):
 def groupdetail(request, group_id):
     group = Group.objects.get(pk=group_id)
     user_list = group.players.all()
-    return render(request, "Group/Show", {"user_list": user_list, "group_id": group_id})
+    return inertia_render(request, "Group/Show", {"user_list": user_list, "group": group})
 
 
 @login_required
