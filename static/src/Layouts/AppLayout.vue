@@ -29,13 +29,14 @@ export default {
     },
     methods: {
         logout() {
-            router.get(this.$page.props.signout_url);
+            const result = this.$page.props.routes.find((route) => route.name == 'signout');
+            router.get(this.$page.props.app_url + result.pattern);
         }
     },
     mounted() {
-        console.log(this.$page.props.routes)
-        console.log(this.$getRoute('dashboard'))
-        console.log(this.$getRoute('groupdetail', {group_id: 1}))
+        // console.log(this.$page.props.routes)
+        // console.log(this.$getRoute('dashboard'))
+        // console.log(this.$getRoute('groupdetail', {group_id: 1}))
     }
 }
 
@@ -163,7 +164,7 @@ export default {
             <div class="px-4 sm:px-6 lg:px-8">
                 <!-- Your content -->
                 <slot />
-                
+
             </div>
         </main>
     </div>

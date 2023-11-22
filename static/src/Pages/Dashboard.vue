@@ -9,6 +9,9 @@ export default {
         return {
             user_groups: this.$page.props.user_groups
         }
+    },
+    mounted() {
+        console.log(this.user_groups);
     }
 }
 

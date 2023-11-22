@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'bilaboard.urls'
 
-APP_URL = 'http://localhost:8000'
+APP_URL = 'http://localhost:8000/'
 
 TEMPLATES = [
     {

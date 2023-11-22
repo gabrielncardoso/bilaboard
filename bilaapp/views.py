@@ -106,9 +106,9 @@ def addplayer(request, group_id):
 
 @login_required
 def storeplayer(request, group_id):
-    user = request.POST["user"]
+    user_id = request.POST["user"]
     g = Group.objects.get(pk=group_id)
-    p = User.objects.get(pk=user)
+    p = User.objects.get(pk=user_id)
     g.players.add(p)
     g.save()
     return redirect("groupdetail", g.id)
