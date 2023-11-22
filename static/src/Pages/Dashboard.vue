@@ -10,9 +10,6 @@ export default {
             user_groups: this.$page.props.user_groups
         }
     },
-    mounted() {
-        console.log(this.user_groups);
-    }
 }
 
 </script>
@@ -27,7 +24,7 @@ export default {
                     <img class="h-10 w-10 rounded-full" src="#" alt="" />
                 </div>
                 <div class="min-w-0 flex-1">
-                    <a :href="'/bilaapp/group/' + group.id" class="focus:outline-none">
+                    <a :href="$buildUrl('groupdetail', {name:'group_id', value: group.id})" class="focus:outline-none">
                         <span class="absolute inset-0" aria-hidden="true" />
                         <p class="text-sm font-medium text-gray-900">{{ group.name }}</p>
                     </a>

@@ -48,7 +48,7 @@ def storesignup(request):
 
 @login_required
 def dashboard(request):
-    user_groups = request.user.groups.all()
+    user_groups = Group.objects.all()
     return inertia_render(request, "Dashboard", {"user_groups": user_groups, 'signout_url': reverse('signout')})
 
 
